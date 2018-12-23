@@ -1,0 +1,83 @@
+{
+  "fruits": [
+    {
+      "id": 6,
+      "name": "orange",
+      "price": "8.88",
+      "store": "20",
+      "sale": "10"
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "id": 7,
+      "store": "20",
+      "sale": "10"
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "id": 8,
+      "store": "20",
+      "sale": "10"
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "id": 9,
+      "store": "20",
+      "sale": "10"
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "id": 10,
+      "store": "20",
+      "sale": "10"
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "store": "1",
+      "sale": "1",
+      "id": 11
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "store": "1",
+      "sale": "1",
+      "id": 12
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "store": "1",
+      "sale": "1",
+      "id": 13
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "store": "1",
+      "sale": "1",
+      "id": 14
+    },
+    {
+      "name": "1",
+      "price": "1",
+      "store": "1",
+      "sale": "1",
+      "id": 15
+    }
+  ],
+  "users": [
+    {
+      "name": {
+        "username": "admin",
+        "nickname": "dachui"
+      },
+      "pwd": "123456"
+    }
+  ]
+}

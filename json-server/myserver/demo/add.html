@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box2">
+        <div>
+            <span>水果：</span>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <span>价格：</span>
+            <input type="text" id="price">
+        </div>
+        <div>
+            <span>库存：</span>
+            <input type="text" id="store">
+        </div>
+        <div>
+            <span>已售：</span>
+            <input type="text" id="sale">
+        </div>
+        <button class="submit" id="submit">提交</button>
+    </div>
+    <script type="text/javascript" src="/js/jq.js"></script>
+    <script>
+    String.prototype.queryURLParameter = function(){
+        let obj = {};
+        let reg = /([^?&=]+)=([^?&=]+)/g;
+        this.replace(reg,function(){
+            let key = arguments[1];
+            let value = arguments[2];
+            obj[key] = value;
+        });
+        return obj;
+    };
+    let url = window.location.href.queryURLParameter();
+    let fruitId = url["id"];
+    let isFlag = typeof fruitId === 'undefined' ? false :true;
+    if(isFlag){ // 修改指定信息
+        // 获取指定信息 填充文本
+        $.ajax({
+            url:'http://localhost:3004/fruits/'+ fruitId,
+            type:'get',
+            success(jsonData){
+                // console.log(jsonData);
+                $("#name")[0].value = jsonData.name;
+                $("#price")[0].value = jsonData.price;
+                $("#store")[0].value = jsonData.store;
+                $("#sale")[0].value = jsonData.sale;
+            }
+        });
+        $("#submit").click(function(){
+            let obj = {
+                name:$("#name").val(),
+                price:$("#price").val(),
+                store:$("#store").val(),
+                sale:$("#sale").val()
+            };
+            $.ajax({
+                url:'http://localhost:3004/fruits/' + fruitId,
+                type:'put',
+                data:obj,  // 注意这里不需要转化为string 自动处理了
+                success(data){
+                    console.log("put success");
+                },
+                error(){
+                    console.log("put error");
+                }
+            });
+        });
+       
+    }else{ // 新增信息
+        $("#submit").click(function(){
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost:3004/fruits',
+                data: {
+                    name:  $("#name").val(),
+                    price: $("#price").val(),
+                    store: $("#store").val(),
+                    sale: $("#sale").val()
+                },
+                success: function(data){
+                    console.log("post success")
+                },
+                error:function(){
+                    alert("post error")
+                }
+            })
+        })
+    }
+    
+ 
+    </script>
+</body>
+</html>

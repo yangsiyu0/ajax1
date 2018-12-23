@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "mock": "json-server db.json --port 3004 --watch"
+    },
+    "dependencies": {
+        "http-server": "^0.11.1"
+    }
+}
